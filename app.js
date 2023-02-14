@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const _ = require("lodash");
 const mongoose = require("mongoose");
+let PORT = process.env.PORT;
 
 mongoose.set("strictQuery", false);
 
@@ -87,6 +88,10 @@ app.get("/posts/:postId", function (req, res) {
   });
 });
 
-app.listen(3000, function () {
-  console.log("Server started on port 3000");
+if (PORT == null || PORT == "") {
+  PORT = 3000;
+}
+
+app.listen(PORT, function () {
+  console.log("Server Has Started Successfully!");
 });
